@@ -1096,21 +1096,21 @@ int _peb_decode( ei_x_buff * x ,zval * htable) {
 	  ALLOC_INIT_ZVAL(z_str);
 	  ALLOC_INIT_ZVAL(z_list);
 
-      buff=emalloc(size+1);
-      ei_decode_string(x->buff, &x->index, buff);
+	  buff=emalloc(size+1);
+	  ei_decode_string(x->buff, &x->index, buff);
 	  buff[size]='\0';
 	  ZVAL_STRING(z_str, buff, 0);
 
 	  array_init(z_list);
 	  for (i=0; i<size; i++){
-	      add_next_index_long(z_list, buff[i]);
+	    add_next_index_long(z_list, buff[i]);
 	  }
 
 	  array_init(z);
 	  add_assoc_zval(z, "str", z_str);
 	  add_assoc_zval(z, "list", z_list);
-      add_next_index_zval(htable, z);
-      break;
+	  add_next_index_zval(htable, z);
+	break;
     case ERL_BINARY_EXT:
       buff = emalloc( size );
       ei_decode_binary( x->buff, & x->index, buff, & len );
